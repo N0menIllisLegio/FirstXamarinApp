@@ -5,9 +5,15 @@
              xmlns:local="clr-namespace:FirstXamarinApp" 
              x:Class="FirstXamarinApp.MainPage">
     <StackLayout>
-        <Label Text="Welcome to Xamarin.Forms!" 
+        <Label Text="Log In" 
                HorizontalOptions="Center" 
                VerticalOptions="CenterAndExpand"
                x:Name="myLabel"/>
+        <Label Text="Login:"/>
+        <Entry />  
+        <Label Text="Password:"/>
+        <Entry />
+        <Button Text="Sign In"/>
+        <Button Text="Sign Up"/>
     </StackLayout>
 </ContentPage>

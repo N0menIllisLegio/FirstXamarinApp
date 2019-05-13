@@ -13,13 +13,14 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.6.0.344457" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
-    <PackageReference Include="Realm" Version="3.4.0" />
     <PackageReference Include="Fody" Version="3.3.5" />
+    <PackageReference Include="Realm" Version="3.4.0" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Schemas\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 </Project>
