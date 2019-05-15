@@ -11,6 +11,7 @@ namespace FirstXamarinApp.Schemas
         public string Name { get; set; }
         public string Surname { get; set; }
         public int Age { get; set; }
+        public bool DisplayAge { get; set; }
 
         public string Role { get; set; }
         public string Avatar { get; set; }

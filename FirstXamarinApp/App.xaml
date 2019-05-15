@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="FirstXamarinApp.App">
+<Application xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FirstXamarinApp.App">
     <Application.Resources>
-        <ResourceDictionary>
+        <ResourceDictionary x:Name="ThemeDictionary">
             <OnPlatform x:TypeArguments="x:String" x:Key="HelveticaThin">
                 <On Platform="Android" Value="HelveticaNeue-thin.ttf#HelveticaNeueCyr" />
                 <On Platform="iOS" Value="HelveticaNeue-thin" />
-            </OnPlatform>
+            </OnPlatform>   
+            
+            <Color x:Key="ButtonBackground">#ffffff</Color>
+            <Color x:Key="ButtonText">#000000</Color>
+            <!-- ButtonBackground-->
+            
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{ DynamicResource ButtonBackground }"/>
+                <Setter Property="TextColor" Value="{ DynamicResource ButtonText }"/>
+            </Style>
+            
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

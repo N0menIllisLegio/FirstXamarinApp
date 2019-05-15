@@ -12,7 +12,9 @@
                    VerticalTextAlignment="Center"
                    Grid.Row="0" Grid.Column="0"/>
             <Switch HorizontalOptions="End"
-                    Grid.Row="0" Grid.Column="1"/>
+                    Grid.Row="0" Grid.Column="1"
+                    x:Name="Theme"
+                    Toggled="ChangeTheme"/>
             <Label Text="Font Size:"
                    VerticalTextAlignment="Center"
                    Grid.Row="1" Grid.Column="0"/>
@@ -33,5 +35,10 @@
             <Switch HorizontalOptions="End"
                     Grid.Row="4" Grid.Column="1"/>
         </Grid>
+                 
+        <Button Text="Save" 
+                HeightRequest="40"
+                WidthRequest="200"
+                HorizontalOptions="Center"/>
     </StackLayout>
 </ContentPage>

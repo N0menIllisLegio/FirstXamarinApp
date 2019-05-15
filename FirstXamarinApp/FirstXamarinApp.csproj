@@ -19,9 +19,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="FodyWeavers.xml" />
+    <None Remove="Themes\LightTheme.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Schemas\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Themes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

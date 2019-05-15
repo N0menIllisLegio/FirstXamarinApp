@@ -67,15 +67,11 @@
             <Button Text="Save" 
                     HeightRequest="40"
                     WidthRequest="200"
-                    HorizontalOptions="Center"
-                    BackgroundColor="Gray" 
-                    TextColor="White"/>
+                    HorizontalOptions="Center"/>
             <Button Text="Cancel" 
                     HeightRequest="40"
                     WidthRequest="200"
-                    HorizontalOptions="Center"
-                    BackgroundColor="Gray" 
-                    TextColor="White"/>
+                    HorizontalOptions="Center"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

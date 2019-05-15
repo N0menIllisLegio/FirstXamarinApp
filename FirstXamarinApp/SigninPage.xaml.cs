@@ -11,6 +11,7 @@ namespace FirstXamarinApp
         {
             InitializeComponent();
         }
+
         private async void ToTabbedPage(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SettingsPage());
@@ -49,4 +50,6 @@ namespace FirstXamarinApp
     ios:Page.UseSafeArea="true"
        
  Add Lines breaks on buttons, labels etc.
+
+ Save theme (quit app and start again => theme same as before)   
 */

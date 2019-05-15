@@ -5,8 +5,9 @@
              xmlns:local="clr-namespace:FirstXamarinApp" 
              x:Class="FirstXamarinApp.SignInPage"
              NavigationPage.HasNavigationBar="false">
-
+        
     <StackLayout Spacing="15" 
+                 StyleClass="LightTheme"
                  VerticalOptions="CenterAndExpand"
                  Margin="50,0,50,0">
         
@@ -31,15 +32,12 @@
                 HeightRequest="40"
                 WidthRequest="150"
                 HorizontalOptions="Center"
-                Clicked="ToTabbedPage"
-                BackgroundColor="Gray" 
-                TextColor="White"/>
+                Clicked="ToTabbedPage"/>
         <Button Text="Sign Up" 
                 HeightRequest="40"
                 WidthRequest="150"
                 HorizontalOptions="Center"
-                Clicked="ToSignUpPage"
-                BackgroundColor="Gray" TextColor="White"/>
-        
+                Clicked="ToSignUpPage"/>
     </StackLayout>
+        
 </ContentPage>
