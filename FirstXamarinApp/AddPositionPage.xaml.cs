@@ -45,7 +45,7 @@ namespace FirstXamarinApp
                 if (sender == A)
                 {
                     PositionColor = new Color(PositionColor.R, PositionColor.G, PositionColor.B, slider.Value);
-                    ALabel.Text = $"Alpha = {alpha / 255d * 100} %";
+                    ALabel.Text = $"Alpha = {(alpha / 255d):P1}";
                 }
 
 
