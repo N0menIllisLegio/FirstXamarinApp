@@ -140,4 +140,7 @@
       <Name>FirstXamarinApp</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\HelveticaNeue-thin.ttf" />
+  </ItemGroup>
 </Project>

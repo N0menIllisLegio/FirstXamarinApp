@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="FirstXamarinApp.AddPositionPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true">
+    <ScrollView>
+        <StackLayout Margin="20" Spacing="10">
+            <Label Text="Add | Edit position" 
+                   LineBreakMode="MiddleTruncation"
+                   FontFamily="{StaticResource HelveticaThin}"
+                   Margin="0, 0, 0, 40"
+                   FontSize="25"
+                   HorizontalOptions="CenterAndExpand"/>
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.35*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Text="Title:" 
+                       VerticalTextAlignment="Center" 
+                       Grid.Row="0" Grid.Column="0"/>
+                <Entry Grid.Row="0" Grid.Column="1" />
+            </Grid>
+            
+            <StackLayout Margin="0, 30, 0, 30">
+                <Label HorizontalTextAlignment="Center" Text="Color:" Margin="0,0,0,10"/>
+                <Slider HorizontalOptions="Fill"
+                        ValueChanged="OnSliderValueChanged" x:Name="A"/>
+                <Label Text="Alpha = 0" HorizontalTextAlignment="Center"
+                       x:Name="ALabel"/>
+                <Slider HorizontalOptions="Fill"
+                        ValueChanged="OnSliderValueChanged" x:Name="R"/>
+                <Label Text="Red = 0" HorizontalTextAlignment="Center"
+                       x:Name="RLabel"/>
+                <Slider HorizontalOptions="Fill"
+                        ValueChanged="OnSliderValueChanged" x:Name="G"/>
+                <Label Text="Green = 0" HorizontalTextAlignment="Center"
+                       x:Name="GLabel"/>
+                <Slider HorizontalOptions="Fill"
+                        ValueChanged="OnSliderValueChanged" x:Name="B"/>
+                <Label Text="Blue = 0" HorizontalTextAlignment="Center"
+                       x:Name="BLabel"/>
+                <Grid Margin="0, 20, 0, 0">  
+                    <Label Text="#00000000" 
+                           x:Name="HexColor"
+                           VerticalTextAlignment="Center" 
+                           HorizontalTextAlignment="Center"
+                           Grid.Row="0"/>
+                     
+                    <BoxView CornerRadius="5"
+                             BackgroundColor="LightGray"
+                             Grid.Row="0" Grid.Column="1" />
+                    
+                    <BoxView Margin="1" CornerRadius="5"
+                             BackgroundColor="White"
+                             Grid.Row="0" Grid.Column="1" />
+                    
+                    <BoxView Margin="1" CornerRadius="5"
+                             x:Name="ColorDisplay"
+                             BackgroundColor="White"
+                             Grid.Row="0" Grid.Column="1" />        
+                </Grid>
+            </StackLayout>
+            
+            <Button Text="Save" 
+                    HeightRequest="40"
+                    WidthRequest="200"
+                    HorizontalOptions="Center"
+                    BackgroundColor="Gray" 
+                    TextColor="White"/>
+            <Button Text="Cancel" 
+                    HeightRequest="40"
+                    WidthRequest="200"
+                    HorizontalOptions="Center"
+                    BackgroundColor="Gray" 
+                    TextColor="White"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

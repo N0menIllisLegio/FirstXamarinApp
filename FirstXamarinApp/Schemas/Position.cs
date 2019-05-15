@@ -3,7 +3,7 @@ using Realms;
 
 namespace FirstXamarinApp.Schemas
 {
-    public class Project : RealmObject
+    public class Position : RealmObject
     {
         public string Title { get; set; }
     }

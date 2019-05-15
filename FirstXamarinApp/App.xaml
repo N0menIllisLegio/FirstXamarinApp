@@ -1,5 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="FirstXamarinApp.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <OnPlatform x:TypeArguments="x:String" x:Key="HelveticaThin">
+                <On Platform="Android" Value="HelveticaNeue-thin.ttf#HelveticaNeueCyr" />
+                <On Platform="iOS" Value="HelveticaNeue-thin" />
+            </OnPlatform>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -31,7 +31,7 @@ namespace FirstXamarinApp.Controllers
 
             realm.Write(() =>
             {
-                realm.Add(new User { id = 2, Name = "Masha" });
+                //realm.Add(new User { id = 2, Name = "Masha" });
                 //realm.Remove(users.ToArray()[1]);
             });
 

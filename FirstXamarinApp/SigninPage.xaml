@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:FirstXamarinApp" 
+             x:Class="FirstXamarinApp.SignInPage"
+             NavigationPage.HasNavigationBar="false">
+
+    <StackLayout Spacing="15" 
+                 VerticalOptions="CenterAndExpand"
+                 Margin="50,0,50,0">
+        
+        <Label Text="Sign In Your Account"
+               LineBreakMode="MiddleTruncation"
+               FontFamily="{StaticResource HelveticaThin}"
+               Margin="0, 0, 0, 25"
+               FontSize="25"
+               HorizontalOptions="CenterAndExpand"/>
+
+        <Entry Placeholder="Login"
+               WidthRequest="250"
+               HorizontalOptions="Center"/>
+        
+        <Entry Placeholder="Password" 
+               IsPassword="true"
+               Margin="0, 0, 0, 25"
+               WidthRequest="250"
+               HorizontalOptions="Center"/>
+        
+        <Button Text="Sign In"
+                HeightRequest="40"
+                WidthRequest="150"
+                HorizontalOptions="Center"
+                Clicked="ToTabbedPage"
+                BackgroundColor="Gray" 
+                TextColor="White"/>
+        <Button Text="Sign Up" 
+                HeightRequest="40"
+                WidthRequest="150"
+                HorizontalOptions="Center"
+                Clicked="ToSignUpPage"
+                BackgroundColor="Gray" TextColor="White"/>
+        
+    </StackLayout>
+</ContentPage>
