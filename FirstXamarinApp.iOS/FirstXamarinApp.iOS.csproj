@@ -132,6 +132,21 @@
     <PackageReference Include="Fody">
       <Version>3.3.5</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugin.Iconize">
+      <Version>3.5.0.129</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Iconize.FontAwesome">
+      <Version>3.5.0.129</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Iconize.Material">
+      <Version>3.5.0.129</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Iconize.Ionicons">
+      <Version>3.5.0.129</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Iconize.WeatherIcons">
+      <Version>3.5.0.129</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -142,5 +157,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\HelveticaNeue-thin.ttf" />
+    <BundleResource Include="Resources\Gears.png" />
+    <BundleResource Include="Resources\Projects.png" />
+    <BundleResource Include="Resources\Profile.png" />
+    <BundleResource Include="Resources\AddButton.png" />
   </ItemGroup>
 </Project>

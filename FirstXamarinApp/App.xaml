@@ -11,13 +11,15 @@
             
             <Color x:Key="ButtonBackground">#ffffff</Color>
             <Color x:Key="ButtonText">#000000</Color>
-            <!-- ButtonBackground-->
             
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{ DynamicResource ButtonBackground }"/>
                 <Setter Property="TextColor" Value="{ DynamicResource ButtonText }"/>
-            </Style>
+            </Style>    
             
+            <Style TargetType="ImageButton">
+                <Setter Property="BorderColor" Value="{DynamicResource ButtonBackground}"/>
+            </Style>
             
         </ResourceDictionary>
     </Application.Resources>

@@ -23,6 +23,13 @@ namespace FirstXamarinApp
 
         public App()
         {
+            Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.FontAwesomeRegularModule());
+            Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.FontAwesomeBrandsModule());
+            Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.FontAwesomeSolidModule());
+            Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.IoniconsModule());
+            Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.WeatherIconsModule());
+            Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.MaterialModule());
+
             InitializeComponent();
             LoadThemes();
             ChangeTheme("DarkTheme");

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using Xamarin.Forms;
+using System.Linq;
 using System;
 
 namespace FirstXamarinApp
@@ -14,7 +15,8 @@ namespace FirstXamarinApp
 
         private async void ToTabbedPage(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SettingsPage());
+            await Navigation.PushAsync(new AppTabbedPage());
+
         }
 
         private async void ToSignUpPage(object sender, EventArgs e)
