@@ -4,7 +4,8 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="FirstXamarinApp.AddProjectPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
-             ios:Page.UseSafeArea="true">
+             ios:Page.UseSafeArea="true"
+             Style="{DynamicResource pageStyle}">
     <ContentPage.ToolbarItems> 
         <ToolbarItem Text="Save" Clicked="Save"/>
     </ContentPage.ToolbarItems>
@@ -30,7 +31,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
        
-            <BoxView BackgroundColor="Black"
+            <BoxView 
+                     Style="{DynamicResource Lines}"
                      HeightRequest="0.3"
                      Grid.Row="7" Grid.ColumnSpan="2"
                      Margin="0,25,0,25"/>
@@ -45,7 +47,7 @@
             <Label Text="Deadline:" VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="0"/>
             <DatePicker x:Name="Date" FontFamily="{StaticResource HelveticaThin}" MinimumDate="{x:Static sys:DateTime.Now}" Format="dd MMMM, yyyy"  Grid.Row="2" Grid.Column="1"/>
             
-            <Editor x:Name="Description" Grid.Row="3" Grid.RowSpan="4" Grid.ColumnSpan="2" Placeholder="Enter project description..." BackgroundColor="Silver" />
+            <Editor x:Name="Description" Grid.Row="3" Grid.RowSpan="4" Grid.ColumnSpan="2" Placeholder="Enter project description..." />
                 
             <Label Text="Position:" VerticalTextAlignment="Center" Grid.Row="8" Grid.Column="0"/>
             <Picker ItemsSource="{Binding ListPositions}" ItemDisplayBinding="{Binding Title}" x:Name="PickedPosition" Title="Position" FontFamily="{StaticResource HelveticaThin}" Grid.Row="8" Grid.Column="1"/>

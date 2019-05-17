@@ -5,7 +5,8 @@
              ios:Page.UseSafeArea="true"
              xmlns:local="clr-namespace:FirstXamarinApp;assembly=FirstXamarinApp"
              x:Class="FirstXamarinApp.ProfilePage"
-             NavigationPage.Title="Profile">
+             NavigationPage.Title="Profile"
+             Style="{DynamicResource pageStyle}">
         <ContentPage.Resources>
             <local:PriorityConverter x:Key="Converter1"/>
         </ContentPage.Resources>
@@ -43,9 +44,7 @@
             <ListView
                 Margin="0,0,15,0"
                 IsGroupingEnabled="True"
-                x:Name="ProjectsList"
-                ItemTapped="Handle_ItemTapped">
-            
+                x:Name="ProjectsList">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

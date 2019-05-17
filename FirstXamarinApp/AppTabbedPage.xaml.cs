@@ -14,13 +14,16 @@ namespace FirstXamarinApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AppTabbedPage : TabbedPage
     {
-        public const string lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
         public User loggedUser;
+        private string message = "";
 
         public AppTabbedPage(User user)
         {
             InitializeComponent();
             loggedUser = user;
+
+
+
             Children.Add(new NavigationPage(new AllProjectsPage(user))
             {
                 Icon = "Projects.png",
@@ -34,15 +37,31 @@ namespace FirstXamarinApp
             });
         }
 
+        private async void CheckNotifications()
+        {
+            foreach (Project project in loggedUser.WorkingOnProjects.ToList())
+            {
+                if (project.Deadline < DateTime.Now)
+                {
+                    message += project.Title + "\n";
+                }
+            }
+
+            if (message != "")
+            {
+                DisplayMyAlert();
+            } 
+        } 
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            //DisplayMyAlert();
+            CheckNotifications();
         }
 
         private async void DisplayMyAlert()
         {
-            await DisplayAlert("Alert", lorem + lorem + lorem + lorem, "OK");
+            await DisplayAlert("Crossed Deadline!", message, "OK");
         }
     }
 }

@@ -7,6 +7,7 @@ namespace FirstXamarinApp.Schemas
     public class Position : RealmObject
     {
         [PrimaryKey]
+        public string id { get; set; }
         public string Title { get; set; }
         public string PositionColor { get; set; }
 

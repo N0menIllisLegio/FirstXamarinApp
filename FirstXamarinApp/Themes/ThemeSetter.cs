@@ -8,13 +8,16 @@ namespace FirstXamarinApp.Themes
         public abstract Color ButtonBackground { get; }
         public abstract Color ButtonText { get; }
 
-        //public abstract Color PageBackground { get; set; }
+        public abstract Color AppBackground { get; }
 
-        //public abstract Color LabelText { get; set; }
+        public abstract Color LabelText { get; }
 
-        //public abstract Color EntryBackground { get; set; }
-        //public abstract Color EntryText { get; set; }
-        //public abstract Color EntryPlaceholder { get; set; }
+        public abstract Color EntryBackground { get; }
+        public abstract Color BordersSeparators { get; }
+        public abstract Color Placeholders { get; }
+        public abstract Color EntryText { get; }
+
+        public abstract Color NavBar { get; }
 
         // NavBar Buttons and Title
 
@@ -22,6 +25,13 @@ namespace FirstXamarinApp.Themes
         {
             Application.Current.Resources["ButtonBackground"] = ButtonBackground;
             Application.Current.Resources["ButtonText"] = ButtonText;
+            Application.Current.Resources["AppBackground"] = AppBackground;
+            Application.Current.Resources["LabelText"] = LabelText;
+            Application.Current.Resources["EntryBackground"] = EntryBackground;
+            Application.Current.Resources["BordersSeparators"] = BordersSeparators;
+            Application.Current.Resources["Placeholders"] = Placeholders;
+            Application.Current.Resources["EntryText"] = EntryText;
+            Application.Current.Resources["NavBar"] = NavBar;
         }
     }
 }

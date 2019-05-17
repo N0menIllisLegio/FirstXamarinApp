@@ -38,7 +38,7 @@ namespace FirstXamarinApp
 
         private async void ToSignUpPage(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SignUpPage());
+            await Navigation.PushAsync(new SignUpPage() { Title = "Sign Up"});
         }
     }
 }

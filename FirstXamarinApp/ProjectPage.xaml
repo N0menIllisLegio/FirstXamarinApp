@@ -3,8 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="FirstXamarinApp.ProjectPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             xmlns:local="clr-namespace:FirstXamarinApp;assembly=FirstXamarinApp"
              ios:Page.UseSafeArea="true"
-             NavigationPage.Title="Project">
+             NavigationPage.Title="Project"
+             Style="{DynamicResource pageStyle}">
+        <ContentPage.Resources>
+        <local:SkillConverter x:Key="Converter1"/>
+    </ContentPage.Resources> 
+        
     <StackLayout Margin="20">
         <Grid Margin="0,0,0,20">
             <Grid.ColumnDefinitions>
@@ -46,9 +52,9 @@
       
         <ListView HeightRequest="330" Margin="0,10,15,0" 
                   HasUnevenRows="true" ItemTapped="Handle_ItemTapped"
-                  ItemsSource="{Binding ListUsers}">
-             
-            <ListView.ItemTemplate>
+                  ItemsSource="{Binding ListUsers}"
+                  >
+       <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell Height="65">
                         <Grid Margin="20,10,0,0"
@@ -65,7 +71,7 @@
                             <Label 
                                 Grid.Row="1"
                                 Grid.Column="0"
-                               Text="{Binding SkillLevel}" 
+                               Text="{Binding SkillLevel, Converter={StaticResource Converter1}}" 
                                FontSize="Micro"
                                FontAttributes="Italic" />
                             <Label 
@@ -75,7 +81,7 @@
                             <Label 
                                 Grid.Row="1"
                                 Grid.Column="1"
-                               Text="{Binding CurrentPosition}" 
+                               Text="{Binding CurrentPosition.Title}" 
                                FontSize="Micro"
                                FontAttributes="Italic" />
                         </Grid>

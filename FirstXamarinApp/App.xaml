@@ -11,6 +11,17 @@
             
             <Color x:Key="ButtonBackground">#ffffff</Color>
             <Color x:Key="ButtonText">#000000</Color>
+            <Color x:Key="AppBackground">#ffffffff</Color>
+            <Color x:Key="LabelText">#000000</Color>
+            <Color x:Key="EntryBackground">#ffffff</Color>
+            <Color x:Key="BordersSeparators">#000000</Color>
+            <Color x:Key="Placeholders">#505050</Color>
+            <Color x:Key="EntryText">#000000</Color>
+            <Color x:Key="NavBar">#c1c1c1</Color>
+            
+            <Style x:Key="Lines" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{DynamicResource BordersSeparators}"/>
+            </Style>
             
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{ DynamicResource ButtonBackground }"/>
@@ -21,6 +32,50 @@
                 <Setter Property="BorderColor" Value="{DynamicResource ButtonBackground}"/>
             </Style>
             
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource LabelText}"/>
+            </Style>
+            
+            <Style TargetType="ListView">
+                <Setter Property="BackgroundColor" Value="{DynamicResource AppBackground}"/>
+            </Style>
+            
+            <Style TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="{DynamicResource EntryBackground}"/>
+                <Setter Property="PlaceholderColor" Value="{DynamicResource Placeholders}"/>
+                <Setter Property="TextColor" Value="{DynamicResource EntryText}"/>
+            </Style>
+            
+            <Style TargetType="Picker">
+                <Setter Property="BackgroundColor" Value="{DynamicResource EntryBackground}"/>
+                <Setter Property="TitleColor" Value="{DynamicResource Placeholders}"/>
+                <Setter Property="TextColor" Value="{DynamicResource EntryText}"/>
+            </Style>
+            
+            <Style TargetType="DatePicker">
+                <Setter Property="BackgroundColor" Value="{DynamicResource EntryBackground}"/>
+                <Setter Property="TextColor" Value="{DynamicResource EntryText}"/>
+            </Style>
+            
+            <Style TargetType="Editor">
+                <Setter Property="BackgroundColor" Value="{DynamicResource EntryBackground}"/>
+                <Setter Property="PlaceholderColor" Value="{DynamicResource Placeholders}"/>
+                <Setter Property="TextColor" Value="{DynamicResource EntryText}"/>
+            </Style>
+            
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarTextColor" Value="{DynamicResource LabelText}"/>
+                 <Setter Property="BarBackgroundColor" Value="{DynamicResource NavBar}"/>
+             </Style>
+            
+            <Style x:Key="pageStyle" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{DynamicResource AppBackground}"/>
+            </Style>
+            
+            <Style x:Key="tabbedPageStyle" TargetType="TabbedPage">
+                <Setter Property="BarBackgroundColor" Value="{DynamicResource NavBar}"/>
+                <Setter Property="BarTextColor" Value="{DynamicResource ButtonText}"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

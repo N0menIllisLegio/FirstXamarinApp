@@ -55,10 +55,5 @@ namespace FirstXamarinApp
         {
             await Navigation.PushAsync(new SignUpPage(user) { Title = "Edit User"});
         }
-
-        private async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            //await Navigation.PushAsync(new ProjectPage());
-        }
     }
 }

@@ -40,7 +40,8 @@ namespace FirstXamarinApp
         {
             if (CurrPos.SelectedItem != null)
             {
-                await Navigation.PushAsync(new AddPositionPage(CurrPos.SelectedItem as Position));
+                var temp = CurrPos.SelectedItem as Position;
+                await Navigation.PushAsync(new AddPositionPage(temp.id));
             } 
             else
             {
@@ -51,7 +52,7 @@ namespace FirstXamarinApp
 
         private async void ToAddPositionPage(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new AddPositionPage());
+            await Navigation.PushAsync(new AddPositionPage() { Title = "Add Position"});
         }
 
         private async void ToSignInPage(object sender, System.EventArgs e)

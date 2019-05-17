@@ -14,6 +14,8 @@ namespace FirstXamarinApp
         delegate void HandleSave(Position pos, Position upd);
         private HandleSave handleSave;
 
+        private bool locker = false;
+
         private Position position;
         private Position updPosition;
 
@@ -36,12 +38,9 @@ namespace FirstXamarinApp
             };
         }
 
-        public AddPositionPage(Position position)
+        public AddPositionPage(string id)
         {
             InitializeComponent();
-
-            position = new Position();
-            updPosition = position;
 
             handleSave = (pos, upd) =>
             {
@@ -55,29 +54,31 @@ namespace FirstXamarinApp
                 }
             };
 
-            Title.Text = position.Title;
-            HexColor.Text = position.PositionColor;
-            ColorDisplay.Color = Color.FromHex(position.PositionColor);
+            var posi = PositionsController.SharedInstance.GetPosition(id);
 
-            var _A = (Convert.ToByte(position.PositionColor[1] + position.PositionColor[2] + "") / 255d);
-            var _R = Convert.ToByte(position.PositionColor[3] + position.PositionColor[4] + "");
-            var _G = Convert.ToByte(position.PositionColor[5] + position.PositionColor[6] + "");
-            var _B = Convert.ToByte(position.PositionColor[7] + position.PositionColor[8] + "");
+            this.position = new Position();
+            updPosition = posi;
 
-            A.Value = _A / 255d;
-            R.Value = _B / 255d;
-            G.Value = _G / 255d;
-            B.Value = _B / 255d;
+            locker = true;
+            Title.Text = updPosition.Title;
+            HexColor.Text = updPosition.PositionColor;
+            PositionColor = Color.FromHex(updPosition.PositionColor);
 
-            ALabel.Text = $"Alpha = {_A:P1}";
-            RLabel.Text = $"Red = {_R}";
-            GLabel.Text = $"Green = {_G}"; 
-            BLabel.Text = $"Blue = {_B}";
+            A.Value = Color.FromHex(updPosition.PositionColor).A;
+            R.Value = Color.FromHex(updPosition.PositionColor).R;
+            G.Value = Color.FromHex(updPosition.PositionColor).G;
+            B.Value = Color.FromHex(updPosition.PositionColor).B;
+
+            ALabel.Text = $"Alpha = {Color.FromHex(updPosition.PositionColor).A:P1}";
+            RLabel.Text = $"Red = {Math.Round(Color.FromHex(updPosition.PositionColor).R * 255)}";
+            GLabel.Text = $"Green = {Math.Round(Color.FromHex(updPosition.PositionColor).G * 255)}"; 
+            BLabel.Text = $"Blue = {Math.Round(Color.FromHex(updPosition.PositionColor).B * 255)}";
+            locker = false;
         }
 
         public void OnSliderValueChanged(object sender, EventArgs e)
         {
-            if (sender is Slider)
+            if (sender is Slider && !locker)
             {
                 Slider slider = sender as Slider;
                 byte red = (byte)Math.Round(PositionColor.R * 255);

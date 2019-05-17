@@ -6,7 +6,8 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
     ios:Page.UseSafeArea="true"
     x:Class="FirstXamarinApp.SignUpPage"
-    NavigationPage.Title="Sign Up | Edit User">
+    NavigationPage.Title="Sign Up | Edit User"
+    Style="{DynamicResource pageStyle}">
     <ContentPage.ToolbarItems> 
         <ToolbarItem Text="Save" Clicked="Save"/>
     </ContentPage.ToolbarItems>
@@ -31,12 +32,13 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
-            <BoxView BackgroundColor="Black"
+            <BoxView 
+                     Style="{DynamicResource Lines}"
                      HeightRequest="0.3"
                      Grid.Row="3" Grid.ColumnSpan="2"
                      Margin="0,25,0,25"/>
             
-            <BoxView BackgroundColor="Black"
+            <BoxView Style="{DynamicResource Lines}"
                      HeightRequest="0.3"
                      Grid.Row="7" Grid.ColumnSpan="2"
                      Margin="0,25,0,25"/>
@@ -62,6 +64,7 @@
             <Label Text="Position:" VerticalTextAlignment="Center" Grid.Row="8" Grid.Column="0"/>
             <Picker x:Name="PickedPosition" Title="Position"
                     FontFamily="{StaticResource HelveticaThin}"
+                   
                     ItemsSource="{Binding ListPositions}"
                     ItemDisplayBinding="{Binding Title}"
                     Grid.Row="8" Grid.Column="1"/>

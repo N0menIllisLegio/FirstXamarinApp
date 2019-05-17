@@ -4,10 +4,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:local="clr-namespace:FirstXamarinApp" 
              x:Class="FirstXamarinApp.SignInPage"
-             NavigationPage.HasNavigationBar="false">
+             NavigationPage.HasNavigationBar="false"
+             Style="{DynamicResource pageStyle}">
         
-    <StackLayout Spacing="15" 
-                 StyleClass="LightTheme"
+    <StackLayout Spacing="15"
                  VerticalOptions="CenterAndExpand"
                  Margin="50,0,50,0">
         
@@ -35,6 +35,7 @@
                 WidthRequest="150"
                 HorizontalOptions="Center"
                 Clicked="Authenticate"/>
+        
         <Button Text="Sign Up" 
                 HeightRequest="40"
                 WidthRequest="150"
@@ -42,5 +43,4 @@
                 Clicked="ToSignUpPage"/>
         
     </StackLayout>
-        
 </ContentPage>

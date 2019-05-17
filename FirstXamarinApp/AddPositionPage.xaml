@@ -4,7 +4,8 @@
              x:Class="FirstXamarinApp.AddPositionPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              ios:Page.UseSafeArea="true"
-             NavigationPage.Title="Add | Edit position">
+             NavigationPage.Title="Add | Edit position"
+             Style="{DynamicResource pageStyle}">
     
     <ContentPage.ToolbarItems> 
         <ToolbarItem Text="Save" Clicked="Save"/>
@@ -49,7 +50,7 @@
                            Grid.Row="0"/>
                      
                     <BoxView CornerRadius="5"
-                             BackgroundColor="LightGray"
+                             Style="{DynamicResource Lines}"
                              Grid.Row="0" Grid.Column="1" />
                     
                     <BoxView Margin="1" CornerRadius="5"

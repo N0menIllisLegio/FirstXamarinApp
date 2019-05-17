@@ -27,6 +27,8 @@ namespace FirstXamarinApp.Controllers
         {
             bool success = true;
 
+            position.id = Guid.NewGuid().ToString();
+
             try
             {
                 realm.Write(() =>
@@ -84,6 +86,12 @@ namespace FirstXamarinApp.Controllers
         public List<Position> GetAllPositions()
         {
             return realm.All<Position>().ToList();
+        }
+
+        public Position GetPosition(string id)
+        {
+            //var temp =realm.All<Position>().ToList();
+            return realm.Find<Position>(id);
         }
 
         private PositionsController()
