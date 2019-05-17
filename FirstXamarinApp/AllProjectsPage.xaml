@@ -5,13 +5,15 @@
              x:Class="FirstXamarinApp.AllProjectsPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              xmlns:local="clr-namespace:FirstXamarinApp;assembly=FirstXamarinApp"
-             ios:Page.UseSafeArea="true"> 
+             ios:Page.UseSafeArea="true"
+             NavigationPage.Title="Projects"> 
     <ContentPage.Resources>
         <local:PriorityConverter x:Key="Converter1"/>
     </ContentPage.Resources>
     
     <AbsoluteLayout>
         <ListView
+            x:Name="AllProjectsList"
             ItemTapped="Handle_ItemTapped"
             AbsoluteLayout.LayoutFlags="SizeProportional"
             AbsoluteLayout.LayoutBounds="-20, 0, 1.06, 1"

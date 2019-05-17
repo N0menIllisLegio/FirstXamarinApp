@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using FirstXamarinApp.Controllers;
 using FirstXamarinApp.Schemas;
 using Xamarin.Forms;
@@ -10,10 +11,11 @@ namespace FirstXamarinApp
         //"#00FFFFFF"
         private Color _positionColor;
         private Color PositionColor { get { return _positionColor; } set { ColorDisplay.Color = value; _positionColor = value; } }
-        delegate void HandleSave();
+        delegate void HandleSave(Position pos, Position upd);
         private HandleSave handleSave;
 
         private Position position;
+        private Position updPosition;
 
         public AddPositionPage()
         {
@@ -21,9 +23,9 @@ namespace FirstXamarinApp
 
             position = new Position();
 
-            handleSave = () =>
+            handleSave = (pos, upd) =>
             {
-                if (PositionsController.SharedInstance.AddPosition(position))
+                if (PositionsController.SharedInstance.AddPosition(pos))
                 {
                     Navigation.PopAsync(true);
                 }
@@ -32,6 +34,45 @@ namespace FirstXamarinApp
                     DisplayAlert("Error", "Such position already exist!", "OK");
                 }
             };
+        }
+
+        public AddPositionPage(Position position)
+        {
+            InitializeComponent();
+
+            position = new Position();
+            updPosition = position;
+
+            handleSave = (pos, upd) =>
+            {
+                if (PositionsController.SharedInstance.UpdatePosition(pos, upd))
+                {
+                    Navigation.PopAsync(true);
+                }
+                else
+                {
+                    DisplayAlert("Error", "Such position already exist!", "OK");
+                }
+            };
+
+            Title.Text = position.Title;
+            HexColor.Text = position.PositionColor;
+            ColorDisplay.Color = Color.FromHex(position.PositionColor);
+
+            var _A = (Convert.ToByte(position.PositionColor[1] + position.PositionColor[2] + "") / 255d);
+            var _R = Convert.ToByte(position.PositionColor[3] + position.PositionColor[4] + "");
+            var _G = Convert.ToByte(position.PositionColor[5] + position.PositionColor[6] + "");
+            var _B = Convert.ToByte(position.PositionColor[7] + position.PositionColor[8] + "");
+
+            A.Value = _A / 255d;
+            R.Value = _B / 255d;
+            G.Value = _G / 255d;
+            B.Value = _B / 255d;
+
+            ALabel.Text = $"Alpha = {_A:P1}";
+            RLabel.Text = $"Red = {_R}";
+            GLabel.Text = $"Green = {_G}"; 
+            BLabel.Text = $"Blue = {_B}";
         }
 
         public void OnSliderValueChanged(object sender, EventArgs e)
@@ -69,6 +110,25 @@ namespace FirstXamarinApp
             }
         }
 
+        private void Remove(object sender, EventArgs e)
+        {
+            if (updPosition.UsersOnPosition.ToList().Count == 0)
+            {
+                if (PositionsController.SharedInstance.RemovePosition(updPosition))
+                {
+                    Navigation.PopToRootAsync(true);
+                }
+                else
+                {
+                    DisplayAlert("Error", "Error", "OK");
+                }
+            }
+            else
+            {
+                DisplayAlert("Error", "Cant remove position that people working on!", "OK");
+            }
+        }
+
         private void Save(object sender, EventArgs e)
         {
             position.Title = (Title.Text ?? "").Trim();
@@ -76,7 +136,7 @@ namespace FirstXamarinApp
 
             if (position.Title != "" && position.PositionColor.Length == 9)
             {
-                handleSave();
+                handleSave(position, updPosition);
             }
             else
             {

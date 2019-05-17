@@ -5,7 +5,7 @@ using FirstXamarinApp.Controllers;
 
 namespace FirstXamarinApp
 {
-    public class SignUpPageViewModel : BaseViewModel
+    public class PositionsViewModel : BaseViewModel
     {
         private List<Position> _listPositions;
         public List<Position> ListPositions
@@ -20,7 +20,21 @@ namespace FirstXamarinApp
             }
         }
 
-        public SignUpPageViewModel()
+        private Position _selectedPosition;
+        public Position SelectedPosition
+        {
+            get
+            {
+                return _selectedPosition;
+            }
+            set
+            {
+                if (value != null)
+                    SetProperty(ref _selectedPosition, value);
+            }
+        }
+
+        public PositionsViewModel()
         {
             ListPositions = PositionsController.SharedInstance.GetAllPositions();
         }

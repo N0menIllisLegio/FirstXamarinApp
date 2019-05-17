@@ -4,11 +4,14 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="FirstXamarinApp.AddProjectPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
-             ios:Page.UseSafeArea="true" 
-             NavigationPage.Title="Add | Edit Projects">
+             ios:Page.UseSafeArea="true">
+    <ContentPage.ToolbarItems> 
+        <ToolbarItem Text="Save" Clicked="Save"/>
+    </ContentPage.ToolbarItems>
+    
     <ScrollView>
     <StackLayout Margin="20">
-        <Grid>
+        <Grid x:Name="PageGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
@@ -33,19 +36,19 @@
                      Margin="0,25,0,25"/>
             
             <Label Text="Title:" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0"/>
-            <Entry Placeholder="Title" FontFamily="{StaticResource HelveticaThin}" Grid.Row="0" Grid.Column="1"/>
+            <Entry x:Name="Title" Placeholder="Title" FontFamily="{StaticResource HelveticaThin}" Grid.Row="0" Grid.Column="1"/>
             
             <Label Text="Priority:" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="0"/>
             <Picker Title="Priority" Grid.Row="1" Grid.Column="1" FontFamily="{StaticResource HelveticaThin}" 
                     x:Name="Priority"/>
                 
             <Label Text="Deadline:" VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="0"/>
-            <DatePicker FontFamily="{StaticResource HelveticaThin}" MinimumDate="{x:Static sys:DateTime.Now}" Format="dd MMMM, yyyy"  Grid.Row="2" Grid.Column="1"/>
+            <DatePicker x:Name="Date" FontFamily="{StaticResource HelveticaThin}" MinimumDate="{x:Static sys:DateTime.Now}" Format="dd MMMM, yyyy"  Grid.Row="2" Grid.Column="1"/>
             
-            <Editor Grid.Row="3" Grid.RowSpan="4" Grid.ColumnSpan="2" Placeholder="Enter project description..." BackgroundColor="Silver" />
+            <Editor x:Name="Description" Grid.Row="3" Grid.RowSpan="4" Grid.ColumnSpan="2" Placeholder="Enter project description..." BackgroundColor="Silver" />
                 
             <Label Text="Position:" VerticalTextAlignment="Center" Grid.Row="8" Grid.Column="0"/>
-            <Picker Title="Position" FontFamily="{StaticResource HelveticaThin}" Grid.Row="8" Grid.Column="1"/>
+            <Picker ItemsSource="{Binding ListPositions}" ItemDisplayBinding="{Binding Title}" x:Name="PickedPosition" Title="Position" FontFamily="{StaticResource HelveticaThin}" Grid.Row="8" Grid.Column="1"/>
             
             <Label Text="Skill level:" VerticalTextAlignment="Center" Grid.Row="9" Grid.Column="0"/>
             <Picker Title="Skill level" Grid.Row="9" Grid.Column="1" FontFamily="{StaticResource HelveticaThin}" 
@@ -55,6 +58,14 @@
                     Grid.Row="10" Grid.ColumnSpan="2"
                     Margin="0,20,0,0"
                     Clicked="ToAddPostionPage"/>
+            <Button Text="Delete Project" 
+                Grid.Row="11" Grid.ColumnSpan="2"
+                TextColor="White" BackgroundColor="Red"
+                Margin="0,20,0,0"
+                    IsVisible="false"
+                    x:Name="DEL"
+                Clicked="Handle_Clicked"/>
+            
         </Grid>
     </StackLayout>
     </ScrollView>

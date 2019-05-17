@@ -13,13 +13,13 @@ namespace FirstXamarinApp
 
             switch (priority)
             {
-                case 1:
+                case 0:
                     color = Color.Green;
                     break;
-                case 2:
+                case 1:
                     color = Color.Yellow;
                     break;
-                case 3:
+                case 2:
                     color = Color.Red;
                     break;
                 default:

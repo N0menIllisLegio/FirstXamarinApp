@@ -67,6 +67,7 @@
                     BackgroundColor="Red"
                     TextColor="White"
                     WidthRequest="200" 
+                    IsVisible="false"
                     HorizontalOptions="Center"/>
         </StackLayout>
     </ScrollView>

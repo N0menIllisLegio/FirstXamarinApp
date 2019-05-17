@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
+using FirstXamarinApp.Schemas;
 
 namespace FirstXamarinApp
 {
@@ -18,38 +19,32 @@ namespace FirstXamarinApp
         }
     }
 
-    public class NewUser
-    {
-        public string Name { get; set; }
-        public string Proffesion { get; set; }
-    }
-
     public partial class ProfilePage : ContentPage
     {
-        List<NewUser> users = new List<NewUser>();
+        public List<string> SkillLevels = new List<string> { "Junior", "Middle", "Senior", "Lead" };
+        private User user;
 
-        public ProfilePage()
+        public ProfilePage(User user)
         {
+            this.user = user;
             InitializeComponent();
+        }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Name.Text = user.Name;
+            Surname.Text = user.Surname;
+            Age.Text = user.Age.ToString("dd, MMMM yyyy");
+            CurrentPosition.Text = user.CurrentPosition.Title;
+            CurrentPosition.TextColor = Color.FromHex(user.CurrentPosition.PositionColor);
+            Skill.Text = SkillLevels[user.SkillLevel];
 
-            users.Add(new NewUser
-            {
-                Name = "1",
-                Proffesion = "1"
-            });
-            users.Add(new NewUser
-            {
-                Name = "2",
-                Proffesion = "2"
-            });
-
-
-            var collection = new Grouping<string, NewUser>("MY PROJECTS", users);
-            var UsersGrouped = new ObservableCollection<Grouping<string, NewUser>>();
+            var collection = new Grouping<string, Project>("MY PROJECTS", user.MyProjects.ToList());
+            var UsersGrouped = new ObservableCollection<Grouping<string, Project>>();
             UsersGrouped.Add(collection);
 
-            collection = new Grouping<string, NewUser>("WORKING ON", users);
+            collection = new Grouping<string, Project>("WORKING ON", user.WorkingOnProjects.ToList());
             UsersGrouped.Add(collection);
 
             ProjectsList.ItemsSource = UsersGrouped;
@@ -58,12 +53,12 @@ namespace FirstXamarinApp
 
         private async void ToEditProfilePage(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SignUpPage());
+            await Navigation.PushAsync(new SignUpPage(user) { Title = "Edit User"});
         }
 
         private async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            await Navigation.PushAsync(new ProjectPage());
+            //await Navigation.PushAsync(new ProjectPage());
         }
     }
 }

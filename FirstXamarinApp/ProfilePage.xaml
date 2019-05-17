@@ -3,8 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              ios:Page.UseSafeArea="true"
+             xmlns:local="clr-namespace:FirstXamarinApp;assembly=FirstXamarinApp"
              x:Class="FirstXamarinApp.ProfilePage"
              NavigationPage.Title="Profile">
+        <ContentPage.Resources>
+            <local:PriorityConverter x:Key="Converter1"/>
+        </ContentPage.Resources>
         <StackLayout>
             <Grid Margin="20">
                 <Grid.RowDefinitions>
@@ -17,19 +21,19 @@
                 </Grid.RowDefinitions>
             
                 <Label Text="Name:" Grid.Row="0" Grid.Column="0"/>
-                <Label FontAttributes="Italic" HorizontalTextAlignment="End" Text="NoName" Grid.Row="0" Grid.Column="1"/>
+                <Label x:Name="Name" FontAttributes="Italic" HorizontalTextAlignment="End" Text="NoName" Grid.Row="0" Grid.Column="1"/>
                 
                 <Label Text="Surname:" Grid.Row="1" Grid.Column="0"/>
-                <Label FontAttributes="Italic" HorizontalTextAlignment="End" Text="NoSur" Grid.Row="1" Grid.Column="1"/>
+                <Label x:Name="Surname" FontAttributes="Italic" HorizontalTextAlignment="End" Text="NoSur" Grid.Row="1" Grid.Column="1"/>
                 
-                <Label Text="Age:" Grid.Row="2" Grid.Column="0"/>
-                <Label FontAttributes="Italic" HorizontalTextAlignment="End" Text="NoAge" Grid.Row="2" Grid.Column="1"/>
+                <Label Text="Birth Date:" Grid.Row="2" Grid.Column="0"/>
+                <Label x:Name="Age" FontAttributes="Italic" HorizontalTextAlignment="End" Text="NoAge" Grid.Row="2" Grid.Column="1"/>
             
                 <Label Text="Position:" Grid.Row="3" Grid.Column="0"/>
-                <Label FontAttributes="Italic" HorizontalTextAlignment="End" Text="No" Grid.Row="3" Grid.Column="1"/>
+                <Label x:Name="CurrentPosition" FontAttributes="Italic" HorizontalTextAlignment="End" Text="No" Grid.Row="3" Grid.Column="1"/>
                 
                 <Label Text="Skill:" Grid.Row="4" Grid.Column="0"/>
-                <Label FontAttributes="Italic" HorizontalTextAlignment="End" Text="LS" Grid.Row="4" Grid.Column="1"/>
+                <Label x:Name="Skill" FontAttributes="Italic" HorizontalTextAlignment="End" Text="LS" Grid.Row="4" Grid.Column="1"/>
                 
                 <Button HorizontalOptions="Center" WidthRequest="200"
                 Text="Edit Profile" Margin="0,20,0,0" Grid.Row="5" Grid.ColumnSpan="2"
@@ -40,7 +44,8 @@
                 Margin="0,0,15,0"
                 IsGroupingEnabled="True"
                 x:Name="ProjectsList"
-            ItemTapped="Handle_ItemTapped">
+                ItemTapped="Handle_ItemTapped">
+            
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -51,13 +56,8 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                             
-                                <BoxView Margin="5" BackgroundColor="Red" Grid.Column="0" />
-                                <Label VerticalTextAlignment="Center" Grid.Column="1" Text="{Binding Name}" />
-                                <Label VerticalTextAlignment="Center" 
-                                       Grid.Column="2" 
-                                       Margin="0,0,10,0"
-                                       Text="{Binding Proffession}" FontSize="Micro"
-                                       FontAttributes="Italic"/>
+                                <BoxView Margin="5" CornerRadius="16" BackgroundColor="{Binding Priority, Converter={StaticResource Converter1}}" Grid.Column="0" />
+                                <Label VerticalTextAlignment="Center" Grid.Column="1" Text="{Binding Title}" />
 
                             </Grid>
                         </ViewCell>

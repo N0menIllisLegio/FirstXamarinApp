@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using FirstXamarinApp.Controllers;
+using FirstXamarinApp.Schemas;
+using Xamarin.Forms;
 
 namespace FirstXamarinApp
 {
@@ -10,8 +12,14 @@ namespace FirstXamarinApp
 
             var app = (App)Application.Current;
             Theme.IsToggled = app.CurrentTheme == "DarkTheme";
+            BindingContext = new PositionsViewModel();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            (BindingContext as PositionsViewModel).ListPositions = PositionsController.SharedInstance.GetAllPositions();
+        }
 
         void ChangeTheme(object sender, ToggledEventArgs e)
         {
@@ -30,7 +38,15 @@ namespace FirstXamarinApp
 
         private async void ToEditPositionPage(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new AddPositionPage());
+            if (CurrPos.SelectedItem != null)
+            {
+                await Navigation.PushAsync(new AddPositionPage(CurrPos.SelectedItem as Position));
+            } 
+            else
+            {
+                await DisplayAlert("Warning", "Nothing to configure", "OK");
+            }
+
         }
 
         private async void ToAddPositionPage(object sender, System.EventArgs e)

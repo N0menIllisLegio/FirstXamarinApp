@@ -6,12 +6,6 @@
             x:Class="FirstXamarinApp.AppTabbedPage"
             NavigationPage.HasNavigationBar="false">
     
-    <NavigationPage Title="Profile" Icon="Profile.png">
-        <x:Arguments>
-            <local:ProfilePage />
-        </x:Arguments>
-    </NavigationPage>
-    
     <NavigationPage Title="Settings" Icon="Gears.png">
         <x:Arguments>
             <local:SettingsPage />

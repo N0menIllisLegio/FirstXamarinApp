@@ -10,12 +10,12 @@ namespace FirstXamarinApp
 {
     public partial class SignUpPage : ContentPage
     {
-        public List<string> SkillLevels = new List<string> { "1. Junior", "2. Middle", "3. Senior", "4. Lead" };
-        delegate void HandleSave();
+        public List<string> SkillLevels = new List<string> { "Junior", "Middle", "Senior", "Lead" };
+        delegate void HandleSave(User usr, User updUsr);
         private HandleSave handleSave;
 
-        private List<string> positions = new List<string>();
         private User user;
+        private User updUser;
 
         public SignUpPage()
         {
@@ -23,9 +23,9 @@ namespace FirstXamarinApp
             Skill.ItemsSource = SkillLevels;
             user = new User();
 
-            handleSave = () => 
+            handleSave = (usr, updUsr) => 
             {
-                if (UsersController.SharedInstance.AddUser(user))
+                if (UsersController.SharedInstance.AddUser(usr))
                 {
                     Navigation.PopAsync(true);
                 }
@@ -35,14 +35,44 @@ namespace FirstXamarinApp
                 }
             };
 
-            BindingContext = new SignUpPageViewModel();
+            Login.IsReadOnly = false;
+            BindingContext = new PositionsViewModel();
+        }
+
+        public SignUpPage(User user)
+        {
+            InitializeComponent();
+            Skill.ItemsSource = SkillLevels;
+            this.user = new User();
+            updUser = user;
+
+            handleSave = (usr, updUsr) =>
+            {
+                if (UsersController.SharedInstance.UpdateUser(usr, updUsr))
+                {
+                    Navigation.PopAsync(true);
+                }
+                else
+                {
+                    DisplayAlert("Error!", "User with such login already exists!", "OK");
+                }
+            };
+
+            BindingContext = new PositionsViewModel();
+            Login.Text = user.Login;
+            Name.Text = user.Name;
+            Surname.Text = user.Surname;
+            Date.Date = user.Age;
+            Skill.SelectedIndex = user.SkillLevel;
+
+            Login.IsReadOnly = true;
         }
 
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            (BindingContext as SignUpPageViewModel).ListPositions = PositionsController.SharedInstance.GetAllPositions();
+            (BindingContext as PositionsViewModel).ListPositions = PositionsController.SharedInstance.GetAllPositions();
         }
 
         private async void ToAddPositionPage(object sender, EventArgs e)
@@ -71,7 +101,14 @@ namespace FirstXamarinApp
             {
                 if (user.Password == repass)
                 {
-                    handleSave();
+                    if (updUser == null || user.SkillLevel >= updUser.SkillLevel)
+                    {
+                        handleSave(user, updUser);
+                    }
+                    else
+                    {
+                        DisplayAlert("Error!", "You cant downcast your skill!", "OK");
+                    }
                 }
                 else 
                 {

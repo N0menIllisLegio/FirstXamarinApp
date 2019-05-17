@@ -56,9 +56,68 @@ namespace FirstXamarinApp.Controllers
             return success;
         }
 
-        public bool UpdateUser(User user)
+        public bool UpdateUser(User user, User upd)
         {
-            return true;
+            bool success = true;
+
+            try
+            {
+                realm.Write(() =>
+                {
+                    upd.Name = user.Name;
+                    upd.Age = user.Age;
+                    upd.Surname = user.Surname;
+                    upd.Password = user.Password;
+                    upd.Age = user.Age;
+                    upd.CurrentPosition = user.CurrentPosition;
+                    upd.SkillLevel = user.SkillLevel;
+                });
+            }
+            catch
+            {
+                success = false;
+            }
+
+            return success;
+        }
+
+        public bool AddToWorking(User user, Project project)
+        {
+            bool success = true;
+
+            try
+            {
+                realm.Write(() =>
+                {
+                    user.WorkingOnProjects.Add(project);
+                });
+            }
+            catch
+            {
+                success = false;
+            }
+
+            return success;
+        }
+        
+
+        public bool RemoveFromWorking(User user, Project project)
+        {
+            bool success = true;
+
+            try
+            {
+                realm.Write(() =>
+                {
+                    user.WorkingOnProjects.Remove(project);
+                });
+            }
+            catch
+            {
+                success = false;
+            }
+
+            return success;
         }
 
         private UsersController()

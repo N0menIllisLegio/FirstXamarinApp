@@ -23,50 +23,27 @@ namespace FirstXamarinApp
         {
             base.OnAppearing();
 
-            var pr = new List<Project>();
-            pr.Add(new Project
-            {
-                Title = "Title2",
-                Deadline = new DateTime(),
-                Priority = 2,
-                SkillLevel = 1
-            });
-            pr.Add(new Project
-            {
-                Title = "Title1",
-                Deadline = new DateTime(),
-                Priority = 1,
-                SkillLevel = 2
-            });
-            pr.Add(new Project
-            {
-                Title = "Title3",
-                Deadline = new DateTime(),
-                Priority = 3,
-                SkillLevel = 3
-            });
+            var projects = ProjectsController.SharedInstance.GetAllProjects();
 
-            //ProjectsController.SharedInstance.GetAllProjects();
-            //filter
-            pr = pr.Where((project) => project.SkillLevel <= user.SkillLevel).ToList();
+            projects = projects.Where((project) => project.SkillLevel <= user.SkillLevel).ToList();
 
-            pr.Sort(delegate (Project x, Project y)
+            projects.Sort(delegate (Project x, Project y)
             {
                 return x.Priority.CompareTo(y.Priority);
             });
 
-            (BindingContext as AllProjectsPageViewModel).ListProjects = pr;
+            (BindingContext as AllProjectsPageViewModel).ListProjects = projects;
 
         }
 
         private async void ToAddProjectPage(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddProjectPage());
+            await Navigation.PushAsync(new AddProjectPage(user) { Title = "Add Project" });
         }
 
         private async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            await Navigation.PushAsync(new ProjectPage());
+            await Navigation.PushAsync(new ProjectPage(AllProjectsList.SelectedItem as Project, user));
         }
     }
 }

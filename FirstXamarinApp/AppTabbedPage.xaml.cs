@@ -26,12 +26,18 @@ namespace FirstXamarinApp
                 Icon = "Projects.png",
                 Title = "All projects"
             });
+
+            Children.Add(new NavigationPage(new ProfilePage(user))
+            {
+                Icon = "Profile.png",
+                Title = "Profile"
+            });
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            DisplayMyAlert();
+            //DisplayMyAlert();
         }
 
         private async void DisplayMyAlert()
