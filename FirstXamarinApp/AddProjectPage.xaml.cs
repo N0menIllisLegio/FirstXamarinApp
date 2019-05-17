@@ -11,5 +11,10 @@ namespace FirstXamarinApp
         {
             InitializeComponent();
         }
+
+        private async void ToAddPostionPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddPositionPage());
+        }
     }
 }

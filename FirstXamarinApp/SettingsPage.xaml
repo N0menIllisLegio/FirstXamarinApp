@@ -29,19 +29,17 @@
                    Grid.Row="3" Grid.Column="0"/>
             <Switch HorizontalOptions="End"
                     Grid.Row="3" Grid.Column="1"/>
-            <Label Text="Display age:" 
-                   VerticalTextAlignment="Center"
-                   Grid.Row="4" Grid.Column="0"/>
-            <Switch HorizontalOptions="End"
-                    Grid.Row="4" Grid.Column="1"/>
+
             
             <Picker Title="Positions"
                     Grid.Row="5" Grid.ColumnSpan="2"/>
              
             <Button Text="Add Position" 
-                Grid.Row="6" Grid.Column="0"/>
+                Grid.Row="6" Grid.Column="0"
+                    Clicked="ToAddPositionPage"/>
             <Button Text="Configure Position" 
-                Grid.Row="6" Grid.Column="1"/>
+                Grid.Row="6" Grid.Column="1"
+                    Clicked="ToEditPositionPage"/>
         </Grid>
         
                  
@@ -50,7 +48,8 @@
                 TextColor="White"
                 HeightRequest="40"
                 WidthRequest="200"
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                Clicked="ToSignInPage"/>
     </StackLayout>
     </ScrollView>
 </ContentPage>

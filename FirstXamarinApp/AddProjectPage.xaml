@@ -36,8 +36,9 @@
             <Entry Placeholder="Title" FontFamily="{StaticResource HelveticaThin}" Grid.Row="0" Grid.Column="1"/>
             
             <Label Text="Priority:" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="0"/>
-            <Entry Placeholder="Priority" FontFamily="{StaticResource HelveticaThin}" Grid.Row="1" Grid.Column="1"/>
-
+            <Picker Title="Priority" Grid.Row="1" Grid.Column="1" FontFamily="{StaticResource HelveticaThin}" 
+                    x:Name="Priority"/>
+                
             <Label Text="Deadline:" VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="0"/>
             <DatePicker FontFamily="{StaticResource HelveticaThin}" MinimumDate="{x:Static sys:DateTime.Now}" Format="dd MMMM, yyyy"  Grid.Row="2" Grid.Column="1"/>
             
@@ -49,10 +50,11 @@
             <Label Text="Skill level:" VerticalTextAlignment="Center" Grid.Row="9" Grid.Column="0"/>
             <Picker Title="Skill level" Grid.Row="9" Grid.Column="1" FontFamily="{StaticResource HelveticaThin}" 
                     x:Name="Skill"/>
-            
+                
             <Button Text="Create position" 
                     Grid.Row="10" Grid.ColumnSpan="2"
-                    Margin="0,20,0,0"/>
+                    Margin="0,20,0,0"
+                    Clicked="ToAddPostionPage"/>
         </Grid>
     </StackLayout>
     </ScrollView>

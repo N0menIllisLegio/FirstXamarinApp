@@ -5,12 +5,6 @@
             xmlns:local="clr-namespace:FirstXamarinApp;assembly=FirstXamarinApp"
             x:Class="FirstXamarinApp.AppTabbedPage"
             NavigationPage.HasNavigationBar="false">
-
-    <NavigationPage Title="All Projects" Icon="Projects.png">
-        <x:Arguments>
-            <local:AllProjectsPage />
-        </x:Arguments>
-    </NavigationPage>
     
     <NavigationPage Title="Profile" Icon="Profile.png">
         <x:Arguments>

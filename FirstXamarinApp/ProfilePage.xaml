@@ -5,8 +5,8 @@
              ios:Page.UseSafeArea="true"
              x:Class="FirstXamarinApp.ProfilePage"
              NavigationPage.Title="Profile">
-        <StackLayout Margin="20">
-            <Grid Margin="0, 0, 0, 20">
+        <StackLayout>
+            <Grid Margin="20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20"/>
                     <RowDefinition Height="20"/>
@@ -15,6 +15,7 @@
                     <RowDefinition Height="20"/>
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
+            
                 <Label Text="Name:" Grid.Row="0" Grid.Column="0"/>
                 <Label FontAttributes="Italic" HorizontalTextAlignment="End" Text="NoName" Grid.Row="0" Grid.Column="1"/>
                 
@@ -31,38 +32,37 @@
                 <Label FontAttributes="Italic" HorizontalTextAlignment="End" Text="LS" Grid.Row="4" Grid.Column="1"/>
                 
                 <Button HorizontalOptions="Center" WidthRequest="200"
-                Text="Edit Profile" Margin="0,20,0,0" Grid.Row="5" Grid.ColumnSpan="2"/>
-            
-                <ListView Margin="0,0,15,0" Grid.Row="6" Grid.ColumnSpan="2"/>
-                     <ListView.ItemsSource>
-                      <x:Array Type="{x:Type x:String}">
-                        <x:String>iPhone 7</x:String>
-                        <x:String>Samsung Galaxy S7</x:String>
-                        <x:String>HP Elite x3</x:String>
-                      </x:Array>
-                    </ListView.ItemsSource>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid Margin="20, 0, 0, 0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-                                    <BoxView Margin="5" BackgroundColor="Red" Grid.Column="0" />
-                                    <Label VerticalTextAlignment="Center" Grid.Column="1" Text="Title" />
-                                    <Label VerticalTextAlignment="Center" 
-                                           Grid.Column="2" 
-                                           Margin="0,0,10,0"
-                                           Text="123 d" FontSize="Micro"
-                                           FontAttributes="Italic"/>
-
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                Text="Edit Profile" Margin="0,20,0,0" Grid.Row="5" Grid.ColumnSpan="2"
+                        Clicked="ToEditProfilePage"/>
             </Grid>
+        
+            <ListView
+                Margin="0,0,15,0"
+                IsGroupingEnabled="True"
+                x:Name="ProjectsList"
+            ItemTapped="Handle_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="20, 0, 0, 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                            
+                                <BoxView Margin="5" BackgroundColor="Red" Grid.Column="0" />
+                                <Label VerticalTextAlignment="Center" Grid.Column="1" Text="{Binding Name}" />
+                                <Label VerticalTextAlignment="Center" 
+                                       Grid.Column="2" 
+                                       Margin="0,0,10,0"
+                                       Text="{Binding Proffession}" FontSize="Micro"
+                                       FontAttributes="Italic"/>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
 </ContentPage>

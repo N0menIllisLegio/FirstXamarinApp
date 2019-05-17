@@ -9,33 +9,51 @@ namespace FirstXamarinApp.Controllers
     public class UsersController
     {
         private Realm realm;
+        private static UsersController usersController;
+        public static UsersController SharedInstance { get
+            {
+                if (usersController == null)
+                {
+                    usersController = new UsersController();
+                }
+
+                return usersController;
+            }
+        }
 
         public List<User> GetAllUsers()
         {
             return new List<User>();
         }
 
-        public User GetUser(int Login)
+        public User GetUser(string Login)
         {
-            return new User();
+            return realm.Find<User>(Login);
         }
 
         public bool RemoveUser(User user)
         {
+            //realm.Remove(users.ToArray()[1]);
             return true;
         }
 
         public bool AddUser(User user)
         {
-            var users = realm.All<User>();
-
-            realm.Write(() =>
+            bool success = true;
+            try
             {
-                //realm.Add(new User { id = 2, Name = "Masha" });
-                //realm.Remove(users.ToArray()[1]);
-            });
+                realm.Write(() =>
+                {
+                    realm.Add(user);
+                });
+            }
+            catch
+            {
+                success = false;
+            }
 
-            return true;
+
+            return success;
         }
 
         public bool UpdateUser(User user)

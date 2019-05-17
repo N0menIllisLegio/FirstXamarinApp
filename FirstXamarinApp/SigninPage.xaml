@@ -20,24 +20,27 @@
 
         <Entry Placeholder="Login"
                WidthRequest="250"
-               HorizontalOptions="Center"/>
+               HorizontalOptions="Center"
+               x:Name="Login"/>
         
         <Entry Placeholder="Password" 
                IsPassword="true"
                Margin="0, 0, 0, 25"
                WidthRequest="250"
-               HorizontalOptions="Center"/>
+               HorizontalOptions="Center"
+               x:Name="Password"/>
         
         <Button Text="Sign In"
                 HeightRequest="40"
                 WidthRequest="150"
                 HorizontalOptions="Center"
-                Clicked="ToTabbedPage"/>
+                Clicked="Authenticate"/>
         <Button Text="Sign Up" 
                 HeightRequest="40"
                 WidthRequest="150"
                 HorizontalOptions="Center"
                 Clicked="ToSignUpPage"/>
+        
     </StackLayout>
         
 </ContentPage>

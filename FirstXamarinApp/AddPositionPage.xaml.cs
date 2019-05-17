@@ -1,5 +1,6 @@
 ﻿using System;
-
+using FirstXamarinApp.Controllers;
+using FirstXamarinApp.Schemas;
 using Xamarin.Forms;
 
 namespace FirstXamarinApp
@@ -9,10 +10,28 @@ namespace FirstXamarinApp
         //"#00FFFFFF"
         private Color _positionColor;
         private Color PositionColor { get { return _positionColor; } set { ColorDisplay.Color = value; _positionColor = value; } }
+        delegate void HandleSave();
+        private HandleSave handleSave;
+
+        private Position position;
 
         public AddPositionPage()
         {
             InitializeComponent();
+
+            position = new Position();
+
+            handleSave = () =>
+            {
+                if (PositionsController.SharedInstance.AddPosition(position))
+                {
+                    Navigation.PopAsync(true);
+                }
+                else
+                {
+                    DisplayAlert("Error", "Such position already exist!", "OK");
+                }
+            };
         }
 
         public void OnSliderValueChanged(object sender, EventArgs e)
@@ -47,8 +66,21 @@ namespace FirstXamarinApp
                     PositionColor = new Color(PositionColor.R, PositionColor.G, PositionColor.B, slider.Value);
                     ALabel.Text = $"Alpha = {(alpha / 255d):P1}";
                 }
+            }
+        }
 
+        private void Save(object sender, EventArgs e)
+        {
+            position.Title = (Title.Text ?? "").Trim();
+            position.PositionColor = HexColor.Text;
 
+            if (position.Title != "" && position.PositionColor.Length == 9)
+            {
+                handleSave();
+            }
+            else
+            {
+                DisplayAlert("Error!", "All fields must be filled!", "OK");
             }
         }
     }

@@ -7,6 +7,9 @@
     ios:Page.UseSafeArea="true"
     x:Class="FirstXamarinApp.SignUpPage"
     NavigationPage.Title="Sign Up | Edit User">
+    <ContentPage.ToolbarItems> 
+        <ToolbarItem Text="Save" Clicked="Save"/>
+    </ContentPage.ToolbarItems>
     <ScrollView>
     <StackLayout Margin="20">
         <Grid>
@@ -39,25 +42,29 @@
                      Margin="0,25,0,25"/>
             
             <Label Text="Login:" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0"/>
-            <Entry Placeholder="Login" FontFamily="{StaticResource HelveticaThin}" Grid.Row="0" Grid.Column="1"/>
+            <Entry x:Name="Login" Placeholder="Login" FontFamily="{StaticResource HelveticaThin}" Grid.Row="0" Grid.Column="1"/>
             
             <Label Text="Password:" VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="0"/>
-            <Entry Placeholder="Password" FontFamily="{StaticResource HelveticaThin}" Grid.Row="1" Grid.Column="1"/>
+            <Entry IsPassword="true" x:Name="Password" Placeholder="Password" FontFamily="{StaticResource HelveticaThin}" Grid.Row="1" Grid.Column="1"/>
             
             <Label Text="Repeat password:" VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="0"/>            
-            <Entry Placeholder="Password" FontFamily="{StaticResource HelveticaThin}" Grid.Row="2" Grid.Column="1"/>
+            <Entry IsPassword="true" x:Name="rePassword" Placeholder="Password" FontFamily="{StaticResource HelveticaThin}" Grid.Row="2" Grid.Column="1"/>
             
             <Label Text="Name:" VerticalTextAlignment="Center" Grid.Row="4" Grid.Column="0"/>           
-            <Entry Placeholder="Name" FontFamily="{StaticResource HelveticaThin}" Grid.Row="4" Grid.Column="1"/>
+            <Entry x:Name="Name" Placeholder="Name" FontFamily="{StaticResource HelveticaThin}" Grid.Row="4" Grid.Column="1"/>
             
             <Label Text="Surname:" VerticalTextAlignment="Center" Grid.Row="5" Grid.Column="0"/>            
-            <Entry Placeholder="Surname" FontFamily="{StaticResource HelveticaThin}" Grid.Row="5" Grid.Column="1"/>
+            <Entry x:Name="Surname" Placeholder="Surname" FontFamily="{StaticResource HelveticaThin}" Grid.Row="5" Grid.Column="1"/>
             
             <Label Text="BirthDate:" VerticalTextAlignment="Center" Grid.Row="6" Grid.Column="0"/>
-            <DatePicker FontFamily="{StaticResource HelveticaThin}" MaximumDate="{x:Static sys:DateTime.Now}" Format="dd MMMM, yyyy"  Grid.Row="6" Grid.Column="1"/>
+            <DatePicker x:Name="Date" FontFamily="{StaticResource HelveticaThin}" MaximumDate="{x:Static sys:DateTime.Now}" Format="dd MMMM, yyyy"  Grid.Row="6" Grid.Column="1"/>
             
             <Label Text="Position:" VerticalTextAlignment="Center" Grid.Row="8" Grid.Column="0"/>
-            <Picker Title="Position" FontFamily="{StaticResource HelveticaThin}" Grid.Row="8" Grid.Column="1"/>
+            <Picker x:Name="PickedPosition" Title="Position"
+                    FontFamily="{StaticResource HelveticaThin}"
+                    ItemsSource="{Binding ListPositions}"
+                    ItemDisplayBinding="{Binding Title}"
+                    Grid.Row="8" Grid.Column="1"/>
             
             <Label Text="Skill level:" VerticalTextAlignment="Center" Grid.Row="9" Grid.Column="0"/>
             <Picker Title="Skill level" Grid.Row="9" Grid.Column="1" FontFamily="{StaticResource HelveticaThin}" 

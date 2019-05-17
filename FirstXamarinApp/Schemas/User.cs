@@ -1,21 +1,24 @@
-﻿using Realms;
+﻿using System;
+using System.Collections.Generic;
+using Realms;
 
 namespace FirstXamarinApp.Schemas
 {
     public class User : RealmObject
     {
         [PrimaryKey]
-        public string Login { get; set; }
+        public string Login { get; set; } = "";
         public string Password { get; set; }
 
         public string Name { get; set; }
         public string Surname { get; set; }
-        public int Age { get; set; }
-        public bool DisplayAge { get; set; }
+        private string BirthDate { get; set; }
+        public DateTime Age { get { return DateTime.Parse(BirthDate);  } set { BirthDate = value.ToString("yyyy-MM-dd"); } }
+        public int SkillLevel { get; set; }
 
-        public string Role { get; set; }
-        public string Avatar { get; set; }
+        //Relationships
+        public Position CurrentPosition { get; set; }
+        public IList<Project> MyProjects { get; }
+        public IList<Project> WorkingOnProjects { get; }
     }
 }
-
-//  ???

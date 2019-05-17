@@ -1,22 +1,39 @@
 ﻿using System.ComponentModel;
 using Xamarin.Forms;
-using System.Linq;
+using FirstXamarinApp.Schemas;
+using FirstXamarinApp.Controllers;
 using System;
 
 namespace FirstXamarinApp
 {
     [DesignTimeVisible(true)]
     public partial class SignInPage : ContentPage
-    { 
+    {
         public SignInPage()
         {
             InitializeComponent();
+            //Check if stayed logged
         }
 
-        private async void ToTabbedPage(object sender, EventArgs e)
+        private async void ToTabbedPage(User user)
         {
-            await Navigation.PushAsync(new AppTabbedPage());
+            await Navigation.PushAsync(new AppTabbedPage(user));
+        }
 
+        private void Authenticate(object sender, EventArgs e)
+        {
+            string login = Login.Text;
+            string password = Password.Text;
+            User user = UsersController.SharedInstance.GetUser(login);
+
+            if (user != null && user.Password == password)
+            {
+                ToTabbedPage(user);
+            } 
+            else
+            {
+                DisplayAlert("Error!", "Login or password incorrect!", "OK");
+            }
         }
 
         private async void ToSignUpPage(object sender, EventArgs e)

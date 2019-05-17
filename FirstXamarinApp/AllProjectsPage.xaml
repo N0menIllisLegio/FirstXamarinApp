@@ -4,48 +4,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FirstXamarinApp.AllProjectsPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
-             ios:Page.UseSafeArea="true" 
-             NavigationPage.Title="Projects"> 
+             xmlns:local="clr-namespace:FirstXamarinApp;assembly=FirstXamarinApp"
+             ios:Page.UseSafeArea="true"> 
+    <ContentPage.Resources>
+        <local:PriorityConverter x:Key="Converter1"/>
+    </ContentPage.Resources>
     
     <AbsoluteLayout>
         <ListView
+            ItemTapped="Handle_ItemTapped"
             AbsoluteLayout.LayoutFlags="SizeProportional"
-            AbsoluteLayout.LayoutBounds="-20, 0, 1.06, 1">
-             <ListView.ItemsSource>
-              <x:Array Type="{x:Type x:String}">
-                <x:String>iPhone 7</x:String>
-                <x:String>Samsung Galaxy S7</x:String>
-                <x:String>HP Elite x3</x:String>
-              </x:Array>
-            </ListView.ItemsSource>
+            AbsoluteLayout.LayoutBounds="-20, 0, 1.06, 1"
+            ItemsSource="{Binding ListProjects}"
+           >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <Grid Margin="20, 0, 0, 0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="45"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <BoxView Margin="5" BackgroundColor="Red" Grid.Column="0" />
-                            <Label VerticalTextAlignment="Center" Grid.Column="1" Text="Title" />
-                            <Label VerticalTextAlignment="Center" 
-                                   Grid.Column="2" 
-                                   Margin="0,0,10,0"
-                                   Text="123 d" FontSize="Micro"
-                                   FontAttributes="Italic"/>
-
+                            <BoxView Margin="5" CornerRadius="16" BackgroundColor="{Binding Priority, Converter={StaticResource Converter1}}" Grid.Column="0" />
+                            <Label VerticalTextAlignment="Center" Grid.Column="1" Text="{Binding Title}" />
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         
-        
-        
         <Button Text="+" FontFamily="Arial" FontSize="40"
                 BorderRadius="25"
                 AbsoluteLayout.LayoutFlags="PositionProportional"  
-                AbsoluteLayout.LayoutBounds=".97,.97,50,50" x:Name="Add" />
+                AbsoluteLayout.LayoutBounds=".97,.97,50,50" x:Name="Add" 
+                Clicked="ToAddProjectPage"/>
     </AbsoluteLayout>
 </ContentPage>

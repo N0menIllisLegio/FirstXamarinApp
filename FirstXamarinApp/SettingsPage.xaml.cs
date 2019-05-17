@@ -26,7 +26,21 @@ namespace FirstXamarinApp
             {
                 app.ChangeTheme("LightTheme");
             }
+        }
 
+        private async void ToEditPositionPage(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new AddPositionPage());
+        }
+
+        private async void ToAddPositionPage(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new AddPositionPage());
+        }
+
+        private async void ToSignInPage(object sender, System.EventArgs e)
+        {
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
     }
 }

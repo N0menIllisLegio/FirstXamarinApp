@@ -3,16 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="FirstXamarinApp.AddPositionPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
-             ios:Page.UseSafeArea="true">
+             ios:Page.UseSafeArea="true"
+             NavigationPage.Title="Add | Edit position">
+    
+    <ContentPage.ToolbarItems> 
+        <ToolbarItem Text="Save" Clicked="Save"/>
+    </ContentPage.ToolbarItems>
+    
     <ScrollView>
-        <StackLayout Margin="20" Spacing="10">
-            <Label Text="Add | Edit position" 
-                   LineBreakMode="MiddleTruncation"
-                   FontFamily="{StaticResource HelveticaThin}"
-                   Margin="0, 0, 0, 40"
-                   FontSize="25"
-                   HorizontalOptions="CenterAndExpand"/>
-            
+        <StackLayout Margin="20" Spacing="10">                   
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.35*"/>
@@ -21,7 +20,7 @@
                 <Label Text="Title:" 
                        VerticalTextAlignment="Center" 
                        Grid.Row="0" Grid.Column="0"/>
-                <Entry Grid.Row="0" Grid.Column="1" />
+                <Entry x:Name="Title" Placeholder="Title" Grid.Row="0" Grid.Column="1" />
             </Grid>
             
             <StackLayout Margin="0, 30, 0, 30">
@@ -64,13 +63,10 @@
                 </Grid>
             </StackLayout>
             
-            <Button Text="Save" 
-                    HeightRequest="40"
-                    WidthRequest="200"
-                    HorizontalOptions="Center"/>
-            <Button Text="Cancel" 
-                    HeightRequest="40"
-                    WidthRequest="200"
+            <Button Text="Delete Postion"
+                    BackgroundColor="Red"
+                    TextColor="White"
+                    WidthRequest="200" 
                     HorizontalOptions="Center"/>
         </StackLayout>
     </ScrollView>
