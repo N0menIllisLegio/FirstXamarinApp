@@ -29,7 +29,7 @@ namespace FirstXamarinApp
 
             projects.Sort(delegate (Project x, Project y)
             {
-                return x.Priority.CompareTo(y.Priority);
+                return y.Priority.CompareTo(x.Priority);
             });
 
             (BindingContext as AllProjectsPageViewModel).ListProjects = projects;
